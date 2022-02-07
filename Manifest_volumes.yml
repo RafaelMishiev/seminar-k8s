@@ -16,4 +16,4 @@ spec:
       mountPath: /app/data
   volumes:
   - name: app-storage
-    hostPath: /home/rafaelm/Desktop/storage_app
+    hostPath: /home/ubuntu/mount/
