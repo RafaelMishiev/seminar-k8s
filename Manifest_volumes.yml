@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: animals
-    image: upergiantkir/animals:bear
+    image: supergiantkir/animals:bear
     volumeMounts:
     - name: app-storage
       mountPath: /data
@@ -16,4 +16,4 @@ spec:
       mountPath: /app/data
   volumes:
   - name: app-storage
-    hostPath: /Desktop/storage_app
+    hostPath: /home/rafaelm/Desktop/storage_app
