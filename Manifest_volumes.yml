@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mypods
+ name: mypods
 spec:
-  containers:
-  - name: animals
-    image: supergiantkir/animals:bear
-    volumeMounts:
+ containers:
+ - name: animals
+   image: supergiantkir/animals:bear
+   volumeMounts:
     - name: app-storage
       mountPath: /data
-  - name: springapp
-    image: yanivomc/spring-music:latest
-    volumeMounts:
+ - name: springapp
+   image: yanivomc/spring-music:latest
+   volumeMounts:
     - name: app-storage
       mountPath: /app/data
-  volumes:
-  - name: app-storage
+ volumes:
+ - name: app-storage
     hostPath: /path
