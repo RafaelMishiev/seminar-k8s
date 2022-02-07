@@ -16,4 +16,4 @@ spec:
       mountPath: /app/data
   volumes:
   - name: app-storage
-    hostPath: /Desktop/storage_app
+    HostPath: /Desktop/storage_app
