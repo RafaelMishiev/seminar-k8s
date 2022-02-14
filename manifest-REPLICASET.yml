@@ -7,32 +7,32 @@ metadata:
     tier: frontend
 spec:
   replicas: 3
-  selector:  
+  selector:
     matchLabels:
       tier: frontend
-  template:   
-    metadata:
-      labels:
-        tier: frontend
-     ## name: sidecarpod
+  template:
+    metadata: 
+     name: app1 
+     labels:
+       tier: frontend
     spec:
-      containers:
-      - name: bear
-        image: supergiantkir/animals:bear
-        ports:
-        - containerPort: 80
-        volumeMounts:
-         - name: app-storage
-           mountPath: /storage
-       - name: moose
-         image: yanivomc/spring-music:latest
-         ports:
-         - containerPort: 8080
-        volumeMounts:
-         - name: app-storage
-         mountPath: /storage
-       volumes:
-       - name: app-storage
-         hostPath:
-            # directory location on host
-            path: /data
+     containers:
+     - name: app1
+       image: supergiantkir/animals:bear
+       ports: 
+       - containerPort: 80
+       volumeMounts:
+       - mountPath: /storage
+         name: app-storage
+     - name: app2
+       image: yanivomc/spring-music:latest
+       ports: 
+       - containerPort: 8080
+       volumeMounts:
+       - mountPath: /storage
+         name: app-storage
+     volumes:
+     - name: app-storage
+       hostPath:
+          path: /tmp
+
