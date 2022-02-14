@@ -14,7 +14,7 @@ spec:
     metadata:
       labls:
         tier: frontend
-     # name: sidecarpod
+     ## name: sidecarpod
     spec:
       containers:
       - name: bear
