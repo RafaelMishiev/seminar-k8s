@@ -1,37 +1,68 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-animals
+  name: blue
   labels:
-    app: blue-animals
-    tier: animals
+    services-name:  animals
+    name: blue
 spec:
   replicas: 2
   selector:
     matchLabels:
-    #################
-      tier: animals
-      ###############
+      name: blue
   template:
     metadata:
-      name: myapp
+      name: myapp-1
       labels:
       ###############
-        tier: animals
-        ###############
+        services-name:  animals
+        name: blue
     spec:
      containers:
      - name: bear
-     #######################
-       type : LoadBalancer
-       ###################
        image: supergiantkir/animals:bear
        ports:
        - containerPort: 80
-       volumeMounts:
-       - name: app-storage
-         mountPath: /storage
-     volumes:
-     - name: app-storage
-       hostPath:
-          path: /data
+       
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+  labels:
+    services-name:  animals
+    name: green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: green
+  template:
+    metadata:
+      name: myapp-1
+      labels:
+      ###############
+        services-name:  animals
+        name: green
+    spec:
+     containers:
+     - name: green
+       image: supergiantkir/animals:moose
+       ports:
+       - containerPort: 80
+       
+---
+kind: Service      
+apiVersion: v1     
+metadata:
+  name: srv-animals
+spec:
+  selector:
+    services-name:  animals    
+  ports:          
+  - name: http    
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
