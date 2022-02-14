@@ -23,7 +23,7 @@ spec:
      containers:
      - name: bear
      #######################
-  #     type : LoadBalancer
+       type : LoadBalancer
        ###################
        image: supergiantkir/animals:bear
        ports:
