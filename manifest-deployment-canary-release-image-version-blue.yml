@@ -34,8 +34,7 @@ spec:
      volumes:
      - name: app-storage
        hostPath:
-          path: /data
-          
+          path: /data         
  ---
 
  apiVersion: apps/v1
