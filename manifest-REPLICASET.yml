@@ -11,28 +11,27 @@ spec:
     matchLabels:
       tier: frontend
   template:
-    metadata: 
-     name: app1 
-     labels:
-       tier: frontend
+    metadata:
+      name: myapp
+      labels:
+        tier: frontend
     spec:
      containers:
-     - name: app1
+     - name: bear
        image: supergiantkir/animals:bear
-       ports: 
+       ports:
        - containerPort: 80
        volumeMounts:
-       - mountPath: /storage
-         name: app-storage
-     - name: app2
+       - name: app-storage
+         mountPath: /storage
+     - name: moose
        image: yanivomc/spring-music:latest
-       ports: 
+       ports:
        - containerPort: 8080
        volumeMounts:
-       - mountPath: /storage
-         name: app-storage
+       - name: app-storage
+         mountPath: /storage
      volumes:
      - name: app-storage
        hostPath:
-          path: /tmp
-
+          path: /data
