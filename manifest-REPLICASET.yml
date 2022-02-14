@@ -12,7 +12,7 @@ spec:
       tier: frontend
   template:   
     metadata:
-      labls:
+      labels:
         tier: frontend
      ## name: sidecarpod
     spec:
