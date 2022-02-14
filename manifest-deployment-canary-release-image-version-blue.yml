@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+  labels:
+    app: blue-animals
+    tier: animals
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+    #################
+      tier: animals
+      ###############
+  template:
+    metadata:
+      name: myapp
+      labels:
+      ###############
+        tier: animals
+        ###############
+    spec:
+     containers:
+     - name: bear
+     #######################
+       type : LoadBalancer
+       ###################
+       image: supergiantkir/animals:bear
+       ports:
+       - containerPort: 80
+       volumeMounts:
+       - name: app-storage
+         mountPath: /storage
+     volumes:
+     - name: app-storage
+       hostPath:
+          path: /data
+          
+ ---
+
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+  labels:
+    app: green-animals
+    tier: animals
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+    #################
+      tier: animals
+      ###############
+  template:
+    metadata:
+      name: myapp
+      labels:
+      ###############
+        tier: animals
+        ###############
+    spec:
+     containers:
+     - name: moose
+     #######################
+       type : LoadBalancer
+       ###################
+       image: yanivomc/spring-music:latest
+       ports:
+       - containerPort: 80
+       volumeMounts:
+       - name: app-storage
+         mountPath: /storage
+     volumes:
+     - name: app-storage
+       hostPath:
+          path: /data
