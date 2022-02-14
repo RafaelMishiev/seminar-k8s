@@ -14,8 +14,8 @@ spec:
     metadata:
       labls:
         tier: frontend
-      name: sidecarpod
-     spec:
+     # name: sidecarpod
+    spec:
       containers:
       - name: bear
         image: supergiantkir/animals:bear
