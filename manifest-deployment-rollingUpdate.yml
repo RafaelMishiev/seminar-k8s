@@ -7,11 +7,13 @@ metadata:
     tier: frontend
 spec:
   replicas: 3
+  ################################
   strategy:
    type: RollingUpdate
    rollingUpdate:
     maxSurge: 100%
     maxUnavailable: 25% 
+  ###############################
   selector:
     matchLabels:
       tier: frontend
