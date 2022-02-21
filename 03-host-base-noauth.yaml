@@ -13,14 +13,16 @@ spec:
   - host: 52.19.166.170.nip.io 
     http:
       paths:
-      - path: /bear(/|$)(.*)
+      - path: /
+      # bear(/|$)(.*)
         pathType: Prefix
         backend:
           service:
              name: bear-svc
              port:
                 number: 80
-      - path: /moose(/|$)(.*)
+      - path: /
+      #moose(/|$)(.*)
         pathType: Prefix
         backend:
           service:
