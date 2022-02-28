@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.Deployment.Deployment_name}} 
+  name: {{ .Values.Deployment.Deploy_spring-music}} 
 spec:
   selector: 
     matchLabels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-music
-        image: {{ .Values.Deployment.image_name}}
+        image: {{ .Values.Deployment.image}
         ports:
         - containerPort: 8080
 ---
@@ -26,7 +26,7 @@ metadata:
 spec:
   selector:
     app: music    
-  type: {{ .Values.service.selector_type}}  
+  type: {{ .Values.service.select_type}}  
   ports:         
   - name: http   
     protocol: TCP
@@ -37,11 +37,9 @@ spec:
 
 
 service:
-  Service_name: my-service
-  selector_type: LoadBalancer
-  port: 80
-  targetPort: 8080
+  Service_name: service-music
+  select_type: LoadBalancer
 Deployment:
-  Deployment_name: spring-music
-  replicas_number: 1
-  image_name: yanivomc/spring-music:latest
+  Deploy_spring-music: spring-music
+  replicas_number: 2
+  image: yanivomc/spring-music:latest
